@@ -1,3 +1,4 @@
+#Rename me to config.toml!
 [main]
 #Whether the variable names should be obfuscated
 obfuscate = true

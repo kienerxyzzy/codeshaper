@@ -1,33 +1,33 @@
                                                                                                                                                                                                 
                                                          using /**/                                                                                                                             
-                               namespace std;const int s=16;const                                                                                                                               
-                               int k=2;const char a[17]="012345678"       "9ab"                                "cde"                    "f";                                                    
-                               string u(e c){string h;e o=c    ;for(      int b                                =0;b<                    s;b                                                     
-    ++){            h=a[o                                      %k]+       h;o/=           k;}                  /*h*/                   /*e*/                                                    
-    /**/            /*l*/    return h;}void z(string t,e        c){       cout           <<t<<                  ": "                  <<u(c)        <<" (D"                                     
-    "eci"           "mal"    " "<<(int)c<<")"<<endl;}         const        e f=        UINT_MAX                 ;int                  x,v,         w,l;e i(e                                    
-    j,e m)          {e g=    (j&m)^f;x++;return g;}e p(e       j){e        g=j       <<1;v++                    ;/**/              return          g;}e n(e j)                                  
-    {e g=j>>        1;w++                                     ;           /*l*/    return g                     ;}e r             (e j,e         m){     bool g=                                
-    (j==m);l        ++;                                       /**/        /*o*/   return                        g;}e              d(e j       ,e m){       if(r(                                
-   m,0)){/*_*/      /*h*/ return j;}e q,y;q                  =i(j,        m);y=  i(i(j,                         q),i(            m,q))       ;q=p(i(        q,q))                               
-   ;/**/  /*e*/     /*l*/ return d(y,q);}e                   B(e j        ){     /**/                           /*l*/           return       i(j,j           );}e H                             
-   (e j)   {/**/    /*o*/ return B(d(j,f));    }e Z(e j      ,e m)        {/**/ /*_*/                           /*h*/           /*e*/      /*l*/              return                            
-    d(j,    H(m))   ;}e F (e j         ,e m)   {return B(i(j,m));         }e O(                                 e j,e           m){       if(r(                m,0)){                           
-   /*l*/     /*o*/  /*_*/ /**/         /*h*/   return 0;}if(r(m,1         )){                                   /*e*/         /*l*/     return                    j;}e C=p                      
-   (O(j,      n(m)) );if( r(F(         m,1),  1)){   return d(C,j         );}                                   else{        /*l*/      /*o*/                     return C                      
-   ;}}e        N,G;int    main          (){N  =36;G         =67;z          ("A",N);z("B",G);z("A*B",            O(N,G       ));         cout                    <<   "==="                      
-   "=MA"        "CHINE "  "ST"          "AT"  "IST"                        "ICS===="<<endl;cout<<               "NAN"       "D was"           " triggered "<<x<<" t"                            
-   "ime"         "(s)"<<  endl;cout<<"SHL w"  "as "                        "triggered "<<v<<" time("            "s)"       <<endl;           cout<<"SHR was trigger"                            
-   "ed "          <<w<<   " time(s)"<<endl;   cout                        <<                    "TEQ"           " wa"     "s t" "rig"        "gered "<<l<<" time(s)"                            
-   <<             endl;}   /*_hello_hello_he  llo_h                       ello_                 hello           _hell    o_hel   lo_h       ello_               hello                           
-   _hell           o_hel                lo_he llo_h                       ello_                 hello           _hell   o_hel     lo_h      ello_               hello                           
-                                        _hell o_hel                       lo_he                 llo_h           ello_  hello      _hel      lo_he               llo_h                           
-                                        ello_  hell                       o_hel                 lo_he           llo_h ello_        hell     o_hel               lo_he                           
-        llo_hello_hello_hello_hello_hello_he   llo_                       hello                 _hell           o_hello_he         llo_h    ello_             hello_                            
-        hello_hello_hello_hello_hello_hello_   hello                      _hell                o_hel             lo_hello           _hell   o_hel             lo_hel                            
-        lo_hello_hello_hello_hello_hello_hel   lo_he                      llo_h                ello_             hello_h             ello_  hello             _hello                            
-                                                                          _hell                o_hel             lo_hel               lo_h  ello_               hell                            
-                                                                           o_he                                  llo_                 hello _hell                                               
-                                                                           o_he                                 llo_h                       ello_                                               
-                                                                           hell                                                             o_hel                                               
+                               namespace std;const int e=16;const                                                                                                                               
+                               int m=2;const char v[17]="012345678"       "9ab"                                "cde"                    "f";                                                    
+                               string r(l o){string j;l u=o    ;for(      int f                                =0;f<                    e;f                                                     
+    ++){            j=v[u                                      %m]+       j;u/=           m;}                  /*C*/                   /*o*/                                                    
+    /**/            /*d*/    return j;}void s(string h,l        o){       cout           <<h<<                  ": "                  <<r(o)        <<" (D"                                     
+    "eci"           "mal"    " "<<(int)o<<")"<<endl;}         const        l n=        UINT_MAX                 ;int                  k,x,         c,b;l i(l                                    
+    q,l g)          {l t=    (q&g)^n;k++;return t;}l y(l       q){l        t=q       <<1;x++                    ;/**/              return          t;}l z(l q)                                  
+    {l t=q>>        1;c++                                     ;           /*e*/    return t                     ;}l p             (l q,l         g){     bool t=                                
+    (q==g);b        ++;                                       /**/        /*S*/   return                        t;}l              a(l q       ,l g){       if(p(                                
+   g,0)){/*h*/      /*a*/ return q;}l w,d;w                  =i(q,        g);d=  i(i(q,                         w),i(            g,w))       ;w=y(i(        w,w))                               
+   ;/**/  /*p*/     /*e*/ return a(d,w);}l                   O(l q        ){     /**/                           /*r*/           return       i(q,q           );}l Q                             
+   (l q)   {/**/    /*(*/ return O(a(q,n));    }l M(l q      ,l g)        {/**/ /*T*/                           /*M*/           /*)*/      /*C*/              return                            
+    a(q,    Q(g))   ;}l F (l q         ,l g)   {return O(i(q,g));         }l E(                                 l q,l           g){       if(p(                g,0)){                           
+   /*o*/     /*d*/  /*e*/ /**/         /*S*/   return 0;}if(p(g,1         )){                                   /*h*/         /*a*/     return                    q;}l W=y                      
+   (E(q,      z(g)) );if( p(F(         g,1),  1)){   return a(W,q         );}                                   else{        /*p*/      /*e*/                     return W                      
+   ;}}l        Y,A;int    main          (){Y  =36;A         =67;s          ("A",Y);s("B",A);s("A*B",            E(Y,A       ));         cout                    <<   "==="                      
+   "=MA"        "CHINE "  "ST"          "AT"  "IST"                        "ICS===="<<endl;cout<<               "NAN"       "D was"           " triggered "<<k<<" t"                            
+   "ime"         "(s)"<<  endl;cout<<"SHL w"  "as "                        "triggered "<<x<<" time("            "s)"       <<endl;           cout<<"SHR was trigger"                            
+   "ed "          <<c<<   " time(s)"<<endl;   cout                        <<                    "TEQ"           " wa"     "s t" "rig"        "gered "<<b<<" time(s)"                            
+   <<             endl;}   /*r(TM)CodeShaper  (TM)C                       odeSh                 aper(           TM)Co    deSha   per(       TM)Co               deSha                           
+   per(T           M)Cod                eShap er(TM                       )Code                 Shape           r(TM)   CodeS     hape      r(TM)               CodeS                           
+                                        haper (TM)C                       odeSh                 aper(           TM)Co  deSha      per(      TM)Co               deSha                           
+                                        per(T  M)Co                       deSha                 per(T           M)Cod eShap        er(T     M)Cod               eShap                           
+        er(TM)CodeShaper(TM)CodeShaper(TM)Co   deSh                       aper(                 TM)Co           deShaper(T         M)Cod    eShap             er(TM)                            
+        CodeShaper(TM)CodeShaper(TM)CodeShap   er(TM                      )Code                Shape             r(TM)Cod           eShap   er(TM             )CodeS                            
+        haper(TM)CodeShaper(TM)CodeShaper(TM   )Code                      Shape                r(TM)             CodeSha             per(T  M)Cod             eShape                            
+                                                                          r(TM)                CodeS             haper(               TM)C  odeSh               aper                            
+                                                                           (TM)                                  Code                 Shape r(TM)                                               
+                                                                           Code                                 Shape                       r(TM)                                               
+                                                                           Code                                                             Shape                                               
 */
