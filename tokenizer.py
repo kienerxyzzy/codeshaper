@@ -1,6 +1,8 @@
 # Project Codeshaper
 # Chapter I, the Tokeni(s/z)er
 # Formatted with Black Formatter.
+import tomllib
+
 symbols = (
     list("+-*/%><!&|^~=.,?:;[](){}")
     + "== != >= <= && || >> << += -= *= /= %= &= |= ^= <<= >>= ++ -- -> ::".split()
@@ -15,6 +17,9 @@ obfuscate = temp
 temp = list("ABCDEFGIHJKLMNOPQRSTUVWXYZ")
 shuffle(temp)
 obfuscate += temp
+with open("config.toml", "rb") as f:
+    cfg = tomllib.load(f)
+OBFUSCATE = cfg["main"]["obfuscate"]
 
 
 def handle(code):
@@ -174,11 +179,14 @@ def handle(code):
             cf[i] = ("number", "0")
         if t in unsafe:
             continue
-        if t not in od:
-            od[t] = obfuscate[op]
-            print(t, "->", od[t])
-            op += 1
-        cf[i] = (u, od[t])
+        if OBFUSCATE:
+            if t not in od:
+                od[t] = obfuscate[op]
+                print(t, "->", od[t])
+                op += 1
+            cf[i] = (u, od[t])
+        else:
+            cf[i] = (u, t)
     cf2 = []
     for t in cf:
         if t[1] == "":

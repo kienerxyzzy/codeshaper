@@ -1,63 +1,33 @@
-                                                                
-                                                                
-                                                                
-                                    using namespace             
-    std;const int l=16;           const int v=2;const           
-    char i[17]="0123456"        "789abcdef";string u(o          
-     t){string f;o d=t;         for(int b=0;b<l;b++){f          
-    =i[d%v]+f;d/=v;}/**/        return f;}void q(/*a*/          
-    string p,o t){cout<<       p<<": "<<u(t)<<" (Deci"          
-     "mal "<<(int)t<<")"       <<endl;}const o s=/**/           
-           /*a*/   /*a*/       /*aa*/                           
-           /*a*/              /*aaa*/                           
-           /*a*/              /*aa*/                            
-           /*a*/              /*aa*/ UINT_MAX;int a,c,h         
-           ,m;o               x(o y,o r){o n=(y&r)^s;a++        
-           ;/**/              return n;}o z(o y){o n=y<<        
-           1;c++              ;return n;}o g(o y){o n=y         
-           >>1;h              ++;return n;}o j(o y,o r){        
-           bool              n=(y==r);m++;return n;}o k         
-           (o y,             o r){if                            
-           (j(r,             0)){                               
-           /*a*/             return                             
-            y;}o              w,e;w                             
-           =x(y,             r);e=x(x(y,w),x(r,w));w=z          
-           (x(w,             w));return k(e,w);}o P(o           
-           y){               return x(y,y);}o C(o y){           
-           /*a*/             return P(k(y,s));}o N(o y          
-           ,o                r){return k(y,C(r));}o F(          
-           o  y               ,o r){return P(x(y,r));}          
-                              o R(o y,o r){if(j(r,0)){          
-                              return 0;}if(j(r,1)){             
-                              return y;}o U=z(R(y,g(            
-                                                                
-           r)));if(j(F                                          
-         (r,1),1)){/*a*/                                        
-        return k(U,y);}       else{return U;}}o E,D;int         
-       main(){E=36;D=67;q     ("A",E);q("B",D);q("A*B",R        
-       (E,D));cout<<"==="     "=MACHINE STATISTICS===="<<       
-      endl;cout<<"NAND "      "was triggered "<<a<<" tim"       
-      "e(s)"<<                endl;cout<<"SHL was trigg"        
-      "ered "                          <<c<<                    
-      " time(s"                         ")"<<                   
-       endl;cout                        <<"SHR"                 
-        " was triggered "               <<h<<                   
-         " time(s)"<<endl;              cout<<                  
-             "TEQ was trig"             "gered"                 
-               " "<<m<<" ti"            "me(s)"                 
-               <<endl;}/*a*/            /*aaa*/                 
-             /*aaaaaaaaaaa*/            /*aaa*/                 
-            /*aaaaaaaaaaaa*/             /*aa*/                 
-          /*aaaaaaaaaaaaaa*/             /*aa*/                 
-        /*aaaaaaaaaaaaaaa*/              /*aa*/                 
-     /*aaaaaaaaaaaaaaaaaa*/              /*aa*/                 
-     /*aaaaaaaaaaaaaaaaaa*/              /*aa*/                 
-     /*aaaaaaaaaaaaaaaa*/                                       
-     /*aaaaaaaaaaaaaaaa*/                                       
-       /*aaaaaaaaaaaa*/                                         
-                                                                
-                                                                
-                                                                
-                                                                
-                                                                
-                                                                
+                                                                                                                                                                                                
+                                                         using /**/                                                                                                                             
+                               namespace std;const int s=16;const                                                                                                                               
+                               int k=2;const char a[17]="012345678"       "9ab"                                "cde"                    "f";                                                    
+                               string u(e c){string h;e o=c    ;for(      int b                                =0;b<                    s;b                                                     
+    ++){            h=a[o                                      %k]+       h;o/=           k;}                  /*h*/                   /*e*/                                                    
+    /**/            /*l*/    return h;}void z(string t,e        c){       cout           <<t<<                  ": "                  <<u(c)        <<" (D"                                     
+    "eci"           "mal"    " "<<(int)c<<")"<<endl;}         const        e f=        UINT_MAX                 ;int                  x,v,         w,l;e i(e                                    
+    j,e m)          {e g=    (j&m)^f;x++;return g;}e p(e       j){e        g=j       <<1;v++                    ;/**/              return          g;}e n(e j)                                  
+    {e g=j>>        1;w++                                     ;           /*l*/    return g                     ;}e r             (e j,e         m){     bool g=                                
+    (j==m);l        ++;                                       /**/        /*o*/   return                        g;}e              d(e j       ,e m){       if(r(                                
+   m,0)){/*_*/      /*h*/ return j;}e q,y;q                  =i(j,        m);y=  i(i(j,                         q),i(            m,q))       ;q=p(i(        q,q))                               
+   ;/**/  /*e*/     /*l*/ return d(y,q);}e                   B(e j        ){     /**/                           /*l*/           return       i(j,j           );}e H                             
+   (e j)   {/**/    /*o*/ return B(d(j,f));    }e Z(e j      ,e m)        {/**/ /*_*/                           /*h*/           /*e*/      /*l*/              return                            
+    d(j,    H(m))   ;}e F (e j         ,e m)   {return B(i(j,m));         }e O(                                 e j,e           m){       if(r(                m,0)){                           
+   /*l*/     /*o*/  /*_*/ /**/         /*h*/   return 0;}if(r(m,1         )){                                   /*e*/         /*l*/     return                    j;}e C=p                      
+   (O(j,      n(m)) );if( r(F(         m,1),  1)){   return d(C,j         );}                                   else{        /*l*/      /*o*/                     return C                      
+   ;}}e        N,G;int    main          (){N  =36;G         =67;z          ("A",N);z("B",G);z("A*B",            O(N,G       ));         cout                    <<   "==="                      
+   "=MA"        "CHINE "  "ST"          "AT"  "IST"                        "ICS===="<<endl;cout<<               "NAN"       "D was"           " triggered "<<x<<" t"                            
+   "ime"         "(s)"<<  endl;cout<<"SHL w"  "as "                        "triggered "<<v<<" time("            "s)"       <<endl;           cout<<"SHR was trigger"                            
+   "ed "          <<w<<   " time(s)"<<endl;   cout                        <<                    "TEQ"           " wa"     "s t" "rig"        "gered "<<l<<" time(s)"                            
+   <<             endl;}   /*_hello_hello_he  llo_h                       ello_                 hello           _hell    o_hel   lo_h       ello_               hello                           
+   _hell           o_hel                lo_he llo_h                       ello_                 hello           _hell   o_hel     lo_h      ello_               hello                           
+                                        _hell o_hel                       lo_he                 llo_h           ello_  hello      _hel      lo_he               llo_h                           
+                                        ello_  hell                       o_hel                 lo_he           llo_h ello_        hell     o_hel               lo_he                           
+        llo_hello_hello_hello_hello_hello_he   llo_                       hello                 _hell           o_hello_he         llo_h    ello_             hello_                            
+        hello_hello_hello_hello_hello_hello_   hello                      _hell                o_hel             lo_hello           _hell   o_hel             lo_hel                            
+        lo_hello_hello_hello_hello_hello_hel   lo_he                      llo_h                ello_             hello_h             ello_  hello             _hello                            
+                                                                          _hell                o_hel             lo_hel               lo_h  ello_               hell                            
+                                                                           o_he                                  llo_                 hello _hell                                               
+                                                                           o_he                                 llo_h                       ello_                                               
+                                                                           hell                                                             o_hel                                               
+*/
