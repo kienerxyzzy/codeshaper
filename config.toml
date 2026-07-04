@@ -4,7 +4,7 @@ obfuscate = true
 #Enable (experimental and unchecked) JS support
 js = false
 #Filler when EOF is reached
-filler = "sample"
+filler = "why is github ignoring .gitignore "
 
 [files]
 #Code file
