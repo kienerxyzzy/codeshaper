@@ -166,8 +166,6 @@ def handle(code):
     for i in range(len(cf)):
         u = cf[i][0]
         t = cf[i][1]
-        if u == "string":
-            cf[i] = ("string", '"' + t + '"')
         if u != "word":
             continue
         if t == "true":
