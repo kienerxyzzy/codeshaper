@@ -6,7 +6,7 @@ symbols = (
     + "== != >= <= && || >> << += -= *= /= %= &= |= ^= <<= >>= ++ -- -> ::".split()
 )
 symmers = "".join(list(set("".join(symbols))))
-unsafe = "const void string ifstream file ios is_open istreambuf_iterator char size push_back erase default binary switch case LLONG_MAX INT_MAX else bool long unsigned if main for endl while true std return namespace cin int continue break resize vector map set unordered_map unordered_set using cout false".split()
+unsafe = "UINT_MAX const void string ifstream file ios is_open istreambuf_iterator char size push_back erase default binary switch case LLONG_MAX INT_MAX else bool long unsigned if main for endl while true std return namespace cin int continue break resize vector map set unordered_map unordered_set using cout false".split()
 from random import shuffle
 
 temp = list("abcdefghijklmnopqrstuvwxyz")
@@ -54,10 +54,6 @@ def handle(code):
             elif c in symmers:
                 cf.append((mode, buf))
                 mode = "symbol"
-                buf = c
-            elif c in "0123456789":
-                cf.append((mode, buf))
-                mode = "number"
                 buf = c
             elif c in " \n\t":
                 cf.append((mode, buf))

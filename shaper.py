@@ -15,142 +15,99 @@ from tokenizer import handle
 # between a word and another word or a number.
 # The only real issue is that it doesn't support compiler directives.
 code = """
-/* The UM-32 is a 32-bit processor created by the fictional Cult of the Bound Variable introduced in ICFP 2006.
- * It's been 20 years, but I simply cannot let a processor-related problem slide.
- * Now, I already have a Python implementation of the thing, but it's unbearably slow.
- * So now I'm writing some C++ code to hopefully get it up to a good speed?
- * We'll see.
- * Update: I ran the SANDmark
-*/
-const uint allone=0xFFFFFFFF;
-uint allot_ptr;
-unordered_map<uint,vector<uint>> arrays;
-bool running;
-void init(){
-    string program;
-    while(1){
-        string filename;
-        cout<<"filename:";
-        cin>>filename;
-        ifstream file(filename,ios::binary);
-        if(!file.is_open()){
-            cout<<"error"<<endl;
-            continue;
-        }else{
-            program=string((istreambuf_iterator<char>(file)),istreambuf_iterator<char>());
-            break;
-        }
+using namespace std;
+//Implements most arith instructions
+//using only NAND, SHL, SHR and equality tests.
+const int VS_LEN=16;
+const int VS_RADIX=2;
 
+const char charset[17]="0123456789abcdef";
+string visualize(nanpa N){
+    string out;
+    nanpa T=N;
+    for(int i=0;i<VS_LEN;i++){
+        out=charset[T%VS_RADIX]+out;
+        T/=VS_RADIX;
     }
-    arrays[0];
-    uint temp;
-    temp=0;
-    for(int i=0;i<program.size();i+=4){
-        temp=(unsigned char)program[i]<<24;
-        temp|=(unsigned char)program[i+1]<<16;
-        temp|=(unsigned char)program[i+2]<<8;
-        temp|=(unsigned char)program[i+3];
-        //if(i<400){cout<<temp<<" ";}
-        arrays[0].push_back(temp);
-    }
-    cout<<"copying finished ("<<arrays[0].size()<<" platters)"<<endl;
-    running=true;
+    return out;
 }
-string buffer="";
-uint bufptr=1;
-uint inp(){
-    string temp;
-    if(bufptr>buffer.size()){
-        buffer="";
-        bufptr=0;
-        while(cin>>temp){
-            buffer+=temp;
-        }
-    }
-    uint retval;
-    if(bufptr>=buffer.size()){
-        retval=allone;
+void debug(string label, nanpa N){
+    cout<<label<<": "<<visualize(N)<<" (Decimal "<<(int)N<<")"<<endl;
+    //does display with sign
+}
+const nanpa nxor=UINT_MAX;
+//a number with all bits set to 1
+int nandc,shlc,shrc,eqc;
+nanpa xnand(nanpa x, nanpa y){
+    nanpa r=(x&y)^nxor;
+    //cout<<visualize(x)<<" NAND "<<visualize(y)<<" = "<<visualize(r)<<endl;
+    nandc++;
+    return r;
+}
+nanpa xshl(nanpa x){
+    nanpa r=x<<1;
+    //cout<<visualize(x)<<" SHL = "<<visualize(r)<<endl;
+    shlc++;
+    return r;
+}
+nanpa xshr(nanpa x){
+    nanpa r=x>>1;
+    //cout<<visualize(x)<<" SHR = "<<visualize(r)<<endl;
+    shrc++;
+    return r;
+}
+nanpa xeq(nanpa x, nanpa y){
+    bool r=(x==y);
+    //cout<<visualize(x)<<" == "<<visualize(y)<<" -> "<<r<<endl;
+    eqc++;
+    return r;
+}
+//now that the prereqs are out of my way, functions begin here
+nanpa xadd(nanpa x,nanpa y){
+    if(xeq(y,0)){return x;}
+    nanpa mand,mxor;
+    mand=xnand(x,y);
+    mxor=xnand(xnand(x,mand),xnand(y,mand));
+    mand=xshl(xnand(mand,mand));
+    return xadd(mxor,mand);
+}
+nanpa x1cmp(nanpa x){return xnand(x,x);}
+nanpa x2cmp(nanpa x){return x1cmp(xadd(x,nxor));}
+nanpa xsub(nanpa x,nanpa y){
+    return xadd(x,x2cmp(y));
+}
+nanpa xand(nanpa x,nanpa y){
+    return x1cmp(xnand(x,y));
+}
+nanpa xmul(nanpa x,nanpa y){
+    if(xeq(y,0)){return 0;}
+    if(xeq(y,1)){return x;}
+    nanpa p=xshl(xmul(x,xshr(y)));
+    if(xeq(xand(y,1),1)){
+        return xadd(p,x);
     }else{
-        retval=buffer[bufptr];
+        return p;
     }
-    bufptr++;
-    return retval;
 }
-uint regs[8];
-uint pc,op,a,b,c;
+nanpa m,n;
 int main(){
-    init();
-    while(running){
-        op=arrays[0][pc];
-        a=(op>>6)&7;
-        b=(op>>3)&7;
-        c=op&7;
-        //cout<<"running "<<op<<endl;
-        switch(op>>28){
-        case 0:
-            if(regs[c]!=0){regs[a]=regs[b];}
-            break;
-        case 1:
-            regs[a]=arrays[regs[b]][regs[c]];
-            break;
-        case 2:
-            arrays[regs[a]][regs[b]]=regs[c];
-            break;
-        case 3:
-            regs[a]=regs[b]+regs[c];
-            break;
-        case 4:
-            regs[a]=regs[b]*regs[c];
-            break;
-        case 5:
-            regs[a]=regs[b]/regs[c];
-            break;
-        case 6:
-            regs[a]=~(regs[b]&regs[c]);
-            break;
-        case 7:
-            running=false;
-            break;
-        case 8:
-            allot_ptr++;
-            arrays[allot_ptr];
-            arrays[allot_ptr].resize(regs[c]);
-            regs[b]=allot_ptr;
-            break;
-        case 9:
-            arrays.erase(regs[c]);
-            break;
-        case 10:
-            cout<<(char)(regs[c]);
-            break;
-        case 11:
-            regs[c]=inp();
-            break;
-        case 12:
-            if(regs[b]!=0){
-                arrays[0]=arrays[regs[b]];
-            }
-            pc=regs[c]-1;
-            break;
-        case 13:
-            regs[(op>>25)&7]=op&0x1FFFFFF;
-            break;
-        default:
-            cout<<"invalid opcode";
-            running=false;
-            break;
-
-        }
-        pc++;
-    }
-    cout<<"program halted"<<endl;
+    m=36;
+    n=67;
+    debug("A",m);
+    debug("B",n);
+    debug("A*B",xmul(m,n));
+    cout<<"====MACHINE STATISTICS===="<<endl;
+    cout<<"NAND was triggered "<<nandc<<" time(s)"<<endl;
+    cout<<"SHL was triggered "<<shlc<<" time(s)"<<endl;
+    cout<<"SHR was triggered "<<shrc<<" time(s)"<<endl;
+    cout<<"TEQ was triggered "<<eqc<<" time(s)"<<endl;
 }
 
 """
 l = [i[1] for i in handle(code)]
 s = ""
 for c in l:
-    if len(c) + len(s) > 20:
+    if len(c) + len(s) > 40:
         print(s)
         s = c
     else:
