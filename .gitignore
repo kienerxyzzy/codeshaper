@@ -1,5 +1,5 @@
 # My own files
-*.txt
+output.txt
 config.toml
 
 # Byte-compiled / optimized / DLL files
