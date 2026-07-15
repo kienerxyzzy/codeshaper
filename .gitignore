@@ -1,6 +1,8 @@
 # My own files
 output.txt
 config.toml
+shape.txt
+code.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

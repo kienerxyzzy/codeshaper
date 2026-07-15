@@ -8,20 +8,14 @@ symbols = (
     + "== != >= <= && || >> << += -= *= /= %= &= |= ^= <<= >>= ++ -- -> ::".split()
 )
 symmers = "".join(list(set("".join(symbols))))
-unsafe = "UINT_MAX const void string ifstream file ios is_open istreambuf_iterator char size push_back erase default binary switch case LLONG_MAX INT_MAX else bool long unsigned if main for endl while true std return namespace cin int continue break resize vector map set unordered_map unordered_set using cout false".split()
-from random import shuffle
-
-temp = list("abcdefghijklmnopqrstuvwxyz")
-shuffle(temp)
-obfuscate = temp
-temp = list("ABCDEFGIHJKLMNOPQRSTUVWXYZ")
-shuffle(temp)
-obfuscate += temp
+obfuscate="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 with open("config.toml", "rb") as f:
     cfg = tomllib.load(f)
 OBFUSCATE = cfg["main"]["obfuscate"]
-
-
+with open(cfg["files"]["reserved"]) as f:
+    unsafe=(f.read().split("\n"))
+DEFINES=cfg["defines"]
+print(DEFINES,"\n".join(sorted(unsafe)))
 def handle(code):
     cf = []
     mode = ""
@@ -168,22 +162,25 @@ def handle(code):
             if c == "\n":
                 mode = ""
                 buf = ""
+    defs=dict()
     for i in range(len(cf)):
         u = cf[i][0]
         t = cf[i][1]
         if u != "word":
-            continue
-        if t == "true":
+            pass
+        elif t == "true":
             cf[i] = ("number", "1")
-        if t == "false":
+        elif t == "false":
             cf[i] = ("number", "0")
-        if t in unsafe:
-            continue
-        if OBFUSCATE:
+        elif t in unsafe:pass
+        elif OBFUSCATE:
             if t not in od:
                 od[t] = obfuscate[op]
                 print(t, "->", od[t])
                 op += 1
+            #print(t,"map to",od[t])
+            if t in DEFINES:
+                defs[od[t]]=DEFINES[t]
             cf[i] = (u, od[t])
         else:
             cf[i] = (u, t)
@@ -197,4 +194,4 @@ def handle(code):
             if len(cf2) > 0 and cf2[-1][0] in "word":  # split words
                 cf2.append(("joiner", " "))
             cf2.append(t)
-    return cf2
+    return (cf2,defs)

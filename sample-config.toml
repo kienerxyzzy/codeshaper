@@ -5,7 +5,7 @@ obfuscate = true
 #Enable (experimental and unchecked) JS support
 js = false
 #Filler when EOF is reached
-filler = "sample"
+filler = "dummy"
 
 [files]
 #Code file
@@ -18,3 +18,6 @@ output="output.txt"
 #but causes the code's shape to fit to the shape.txt file.
 #I must warn you that the program does not check if your program is too large to fit,
 #it will simply truncate your code and stop.
+
+[defines]
+uint="unsigned int"

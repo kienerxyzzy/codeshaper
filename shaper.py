@@ -40,6 +40,7 @@ def readf(name):
     except Exception as e:
         print(f"{Kule.RED}Error: Cannot read file {name}")
         print(f"Reason:{repr(e)}{Kule.END}")
+        return ""
 
 
 code = readf(cfg["files"]["code"])
@@ -64,23 +65,26 @@ p = True
 for char in shape:
     q = char == "." or char == " "
     if char == "\n":
-        commands.append((0 if p else 1, sz))
+        commands.append((0 if p else 1, 2*sz))
         commands.append((2,))
         sz = 0
     elif p == q:
         sz += 1
     else:
-        commands.append((0 if p else 1, sz))
+        commands.append((0 if p else 1, 2*sz))
         sz = 1
         p = q
-data = handle(code)
+rdata = handle(code)
+defines=rdata[1]
+data=rdata[0]
 ptr = 0
 sptr = -1
 buf = ""
 plus = False
 word = ["dummy", "dummy"]
 
-
+for k,v in defines.items():
+    output+=f"#define {k} {v}\n"
 # def debug(*args, **kwargs):
 #   print(*args, **kwargs)
 
