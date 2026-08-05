@@ -76,3 +76,13 @@ abs
 swap
 front
 queue
+pair
+first
+second
+_QUINE_DUMMY
+auto
+double
+empty
+round
+sin
+cos

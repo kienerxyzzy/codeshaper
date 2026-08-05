@@ -186,7 +186,7 @@ def handle(code):
             cf[i] = (u, t)
     cf2 = []
     for t in cf:
-        if t[1] == "":
+        if t[1] == "" and t[0]!="string":
             continue
         if t[0] == "symbol":
             cf2.append(t)
